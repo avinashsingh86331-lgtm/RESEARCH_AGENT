@@ -1,0 +1,11 @@
+streamlit
+tavily-python
+trafilatura
+youtube-transcript-api
+scikit-learn
+python-pptx
+fpdf2
+groq
+requests
+python-dotenv
+beautifulsoup4
