@@ -25,11 +25,12 @@ from extractor_module import gather_all_content
 from rag_module import rank_relevant_chunks
 from ai_module import build_source_list, stream_research_notes, generate_slide_outline
 from export_module import create_pptx, create_pdf
+import base64
 
 # ---------------------------------------------------------------------
 # PAGE SETUP - new logo (page icon) + custom styling for the frontend
 # ---------------------------------------------------------------------
-st.set_page_config(page_title="Nova Research", page_icon="🧠", layout="centered")
+st.set_page_config(page_title="NEXIS AI", page_icon="Logo.png", layout="centered")
 
 st.markdown("""
 <style>
@@ -79,7 +80,20 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<p class="nova-title">🧠 Nova — Autonomous Research Agent</p>', unsafe_allow_html=True)
+def get_base64_image(path):
+    with open(path, "rb") as f:
+        return base64.b64encode(f.read()).decode()
+
+logo_base64 = get_base64_image("Logo.png")
+
+
+st.markdown(
+    f'<p class="nova-title">'
+    f'<img src="data:image/png;base64,{logo_base64}" style="height:40px; vertical-align:middle; margin-right:10px;">'
+    f'NEXIS AI — Autonomous Research Agent</p>',
+    unsafe_allow_html=True
+)
+
 st.markdown(
     '<p class="nova-subtitle">Type a topic below and press Enter — '
     'I\'ll research it and hand you notes, a PPT, and a PDF.</p>',
